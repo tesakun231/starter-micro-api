@@ -12,18 +12,7 @@ http.createServer(function (req, res) {
     <script>
       /********** Browser start ********/
       /* This code is run in the browser */
-      console.log('print in browser console ');
-      ls.stdout.on('data', (data) => {
-          console.log('stdout: ${data}');
-        });
-
-    ls.stderr.on('data', (data) => {
-      console.error('stderr: ${data}');
-    });
-
-    ls.on('close', (code) => {
-      console.log('child process exited with code ${code}');
-    });
+      console.log('print in browser console ');      
       /********** Browser end ********/
     </script>
   </body>
