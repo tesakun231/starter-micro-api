@@ -13,20 +13,20 @@ http.createServer(function (req, res) {
       /********** Browser start ********/
       /* This code is run in the browser */
       console.log('print in browser console ');
+      ls.stdout.on('data', (data) => {
+          console.log('stdout: ${data}');
+        });
+
+    ls.stderr.on('data', (data) => {
+      console.error('stderr: ${data}');
+    });
+
+    ls.on('close', (code) => {
+      console.log('child process exited with code ${code}');
+    });
       /********** Browser end ********/
     </script>
   </body>
 </html>`);
     console.log('print in Node.js engine');   
-    ls.stdout.on('data', (data) => {
-      console.log(`stdout: ${data}`);
-    });
-
-    ls.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`);
-    });
-
-    ls.on('close', (code) => {
-      console.log(`child process exited with code ${code}`);
-    });
 }).listen(3000);
